@@ -1696,3 +1696,227 @@ input {
         padding: 0 18px;
     }
 }
+
+/* =========================================================
+   MINI CONSULTATION WIDGET
+   Hanya untuk homepage
+========================================================= */
+
+.consultation-widget {
+    position: fixed;
+    right: 22px;
+    bottom: 92px;
+    width: 220px;
+    padding: 14px 15px;
+    background: rgba(251, 248, 241, .97);
+    border: 1px solid rgba(184, 145, 55, .35);
+    border-radius: 16px;
+    box-shadow: 0 14px 35px rgba(10, 15, 30, .16);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 89;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(18px) scale(.96);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        visibility .7s ease;
+}
+
+.consultation-widget.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+
+/* Tombol close */
+
+.consultation-close {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid rgba(10, 15, 30, .12);
+    border-radius: 50%;
+
+    background: white;
+    color: #555;
+
+    font-size: 17px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: grid;
+    place-items: center;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+
+    transition:
+        transform .2s ease,
+        color .2s ease;
+}
+
+.consultation-close:hover {
+    color: var(--navy);
+    transform: scale(1.05);
+}
+
+
+/* Area ilustrasi */
+
+.consultation-illustration {
+    position: relative;
+
+    width: 62px;
+    min-width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    background: #f3ead2;
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+
+/* Orang yang sedang berkonsultasi */
+
+.consult-person {
+    position: absolute;
+    bottom: 5px;
+
+    font-size: 29px;
+    line-height: 1;
+
+    animation: consultationFloat 2.8s ease-in-out infinite;
+}
+
+.person-one {
+    left: 7px;
+}
+
+.person-two {
+    right: 5px;
+
+    font-size: 25px;
+
+    animation-delay: .4s;
+}
+
+
+/* Bubble chat */
+
+.consult-bubble {
+    position: absolute;
+
+    top: 5px;
+    right: 7px;
+
+    width: 22px;
+    height: 22px;
+
+    display: grid;
+    place-items: center;
+
+    background: white;
+    border-radius: 50%;
+
+    font-size: 11px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .10);
+}
+
+
+/* Teks */
+
+.consultation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.consultation-content strong {
+    color: var(--navy);
+
+    font-size: .78rem;
+    line-height: 1.3;
+}
+
+.consultation-content span {
+    color: var(--muted);
+
+    font-size: .68rem;
+    line-height: 1.4;
+}
+
+
+/* Animasi orang */
+
+@keyframes consultationFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* =========================================================
+   MINI CONSULTATION WIDGET — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .consultation-widget {
+        right: 16px;
+        bottom: 88px;
+
+        width: 205px;
+        padding: 12px;
+    }
+
+    .consultation-illustration {
+        width: 56px;
+        min-width: 56px;
+        height: 56px;
+    }
+
+    .consult-person {
+        font-size: 26px;
+    }
+
+    .person-two {
+        font-size: 22px;
+    }
+}
+
+
+/* =========================================================
+   MINI CONSULTATION WIDGET — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .consult-person {
+        animation: none;
+    }
+
+    .consultation-widget {
+        transition: none;
+    }
+}
