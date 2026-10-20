@@ -1,548 +1,422 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SAM Legal Prima | Solusi Legalitas Anda</title>
-    <meta name="description" content="">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Website Dalam Pemeliharaan | SAM Legal Prima</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Website SAM Legal Prima sedang dalam pemeliharaan. Silakan hubungi kami melalui WhatsApp.">
+
+    <meta name="theme-color" content="#0a1020">
+
+    <style>
+        :root {
+            --navy: #0a1020;
+            --navy-light: #111b30;
+            --gold: #d8b777;
+            --gold-light: #f1d9a3;
+            --white: #ffffff;
+            --muted: #a8b0c2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(216, 183, 119, 0.10),
+                    transparent 35%
+                ),
+                var(--navy);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.15;
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                );
+            background-size: 48px 48px;
+        }
+
+        .header {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 25px 7%;
+            border-bottom: 1px solid rgba(216,183,119,0.16);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .brand-text h2 {
+            font-size: 17px;
+            letter-spacing: 1.5px;
+            color: var(--gold-light);
+        }
+
+        .brand-text p {
+            margin-top: 6px;
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 2px;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 65px 22px 80px;
+        }
+
+        .maintenance {
+            width: 100%;
+            max-width: 720px;
+            text-align: center;
+            animation: appear 1s ease both;
+        }
+
+        .icon-wrap {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 35px;
+            border: 1px solid rgba(216,183,119,0.45);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: rgba(216,183,119,0.045);
+        }
+
+        .icon-wrap::before,
+        .icon-wrap::after {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            border: 1px solid rgba(216,183,119,0.15);
+            border-radius: 50%;
+            animation: pulse 3s ease-out infinite;
+        }
+
+        .icon-wrap::after {
+            animation-delay: 1.5s;
+        }
+
+        .icon-wrap svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--gold);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 16px;
+            border: 1px solid rgba(216,183,119,0.28);
+            border-radius: 50px;
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 26px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(36px, 6vw, 62px);
+            line-height: 1.15;
+            font-weight: normal;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        h1 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .description {
+            max-width: 540px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .divider {
+            width: 65px;
+            height: 2px;
+            background: var(--gold);
+            margin: 30px auto;
+        }
+
+        .contact-text {
+            color: #d9deea;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: linear-gradient(
+                135deg,
+                var(--gold-light),
+                var(--gold)
+            );
+            color: var(--navy);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(216,183,119,0.18);
+        }
+
+        .button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 24px 20px;
+            border-top: 1px solid rgba(216,183,119,0.16);
+            color: #778198;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            color: var(--gold);
+            font-weight: normal;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 20px;
+            }
+
+            .brand img {
+                width: 52px;
+                height: 52px;
+            }
+
+            .brand-text h2 {
+                font-size: 14px;
+            }
+
+            .brand-text p {
+                font-size: 9px;
+                letter-spacing: 1.5px;
+            }
+
+            main {
+                padding: 55px 23px 65px;
+            }
+
+            .icon-wrap {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 30px;
+            }
+
+            .icon-wrap svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            h1 {
+                letter-spacing: -0.8px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="wrap header-inner">
-            <a class="brand" href="index.html">
-                <img src="assets/logo-sam-legal-prima.jpg" alt="SAM Legal Prima">
-            </a>
 
-            <nav class="nav">
-                <a class="active" href="index.html">Beranda</a>
-                <a class="" href="layanan.html">Layanan</a>
-                <a class="" href="tentang.html">Tentang</a>
-                <a class="" href="proses.html">Proses</a>
-                <a class="" href="tim.html">Tim</a>
-                <a class="" href="kontak.html">Kontak</a>
-            </nav>
-
-            <a
-                class="btn btn-gold header-cta"
-                href="https://wa.me/62895414915315"
-                target="_blank"
+    <header class="header">
+        <div class="brand">
+            <img
+                src="assets/logo-sam-legal-prima.jpg"
+                alt="Logo SAM Legal Prima"
             >
-                Konsultasi Gratis
-            </a>
 
-            <button class="nav-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="brand-text">
+                <h2>SAM LEGAL PRIMA</h2>
+                <p>BY SLP GROUP</p>
+            </div>
         </div>
-
-        <nav class="mobile-nav">
-            <a href="index.html">Beranda</a>
-            <a href="layanan.html">Layanan</a>
-            <a href="tentang.html">Tentang</a>
-            <a href="proses.html">Proses</a>
-            <a href="tim.html">Tim</a>
-            <a href="kontak.html">Kontak</a>
-            <a class="btn btn-gold" href="https://wa.me/62895414915315" target="_blank">
-                Konsultasi Gratis
-            </a>
-        </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="wrap hero-grid">
-                <div>
-                    <p class="eyebrow">Sejak 2019 · SLP Group</p>
+        <section class="maintenance">
 
-                    <h1>
-                        Legalitas usaha yang lebih jelas. <span class="shimmer">Bisnis yang lebih siap.</span>
-                    </h1>
-
-                    <p class="lead">
-                        SAM Legal Prima membantu perusahaan dan pelaku usaha dalam
-                        pengurusan legalitas, perizinan, sertifikasi, serta kebutuhan
-                        administratif profesional secara terarah.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a class="btn btn-gold" href="layanan.html">
-                            Jelajahi Layanan
-                        </a>
-
-                        <a class="btn btn-outline" href="kontak.html">
-                            Konsultasi dengan Kami
-                        </a>
-                    </div>
-                </div>
-
-               <div class="hero-card">
-    <svg class="hero-art" viewBox="0 0 440 470" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustrasi timbangan keadilan dan dokumen legalitas">
-                        <defs>
-                            <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0" stop-color="#DAB978"/>
-                                <stop offset="1" stop-color="#AD8547"/>
-                            </linearGradient>
-                        </defs>
-                        <circle class="ha-ring" cx="220" cy="225" r="178"/>
-                        <circle class="ha-ring ha-spin" cx="220" cy="225" r="140"/>
-                        <circle class="ha-ring" cx="220" cy="225" r="100"/>
-
-                        <g class="ha-scale">
-                            <rect x="214" y="140" width="12" height="190" rx="6" fill="url(#gGold)"/>
-                            <path d="M170 350 L270 350 L254 330 L186 330 Z" fill="url(#gGold)"/>
-                            <circle cx="220" cy="130" r="9" fill="url(#gGold)"/>
-                            <g class="ha-beam">
-                                <rect x="110" y="140" width="220" height="7" rx="3.5" fill="url(#gGold)"/>
-                                <g class="ha-pan">
-                                    <path d="M120 147 L88 222 M120 147 L152 222" stroke="#DAB978" stroke-width="1.5" fill="none"/>
-                                    <path d="M80 222 H160 Q154 252 120 252 Q86 252 80 222 Z" fill="url(#gGold)"/>
-                                </g>
-                                <g class="ha-pan ha-pan2">
-                                    <path d="M320 147 L288 222 M320 147 L352 222" stroke="#DAB978" stroke-width="1.5" fill="none"/>
-                                    <path d="M280 222 H360 Q354 252 320 252 Q286 252 280 222 Z" fill="url(#gGold)"/>
-                                </g>
-                            </g>
-                        </g>
-
-                        <g class="ha-float">
-                            <rect x="28" y="62" width="112" height="76" rx="8" class="ha-doc"/>
-                            <text x="42" y="86" class="ha-doc-t">LEGALITAS</text>
-                            <rect x="42" y="98" width="70" height="4" rx="2" class="ha-line"/>
-                            <rect x="42" y="109" width="52" height="4" rx="2" class="ha-line"/>
-                            <circle cx="120" cy="120" r="9" fill="url(#gGold)"/>
-                            <path d="M115.5 120 L119 123.5 L125 116.5" stroke="#0A0F1E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <g class="ha-float ha-float2">
-                            <rect x="316" y="300" width="108" height="76" rx="8" class="ha-doc"/>
-                            <text x="330" y="324" class="ha-doc-t">SERTIFIKASI</text>
-                            <rect x="330" y="336" width="66" height="4" rx="2" class="ha-line"/>
-                            <rect x="330" y="347" width="48" height="4" rx="2" class="ha-line"/>
-                            <circle cx="404" cy="358" r="9" fill="url(#gGold)"/>
-                            <path d="M399.500 358 L403 361.500 L409 354.500" stroke="#0A0F1E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <g class="ha-float ha-float3">
-                            <circle class="ha-seal-bg" cx="372" cy="92" r="26"/>
-                            <circle cx="372" cy="92" r="19" fill="none" stroke="#DAB978" stroke-width="1.5"/>
-                            <path d="M362 92 L369 99 L383 84" stroke="#DAB978" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                    </svg>
-
-                    <div class="hero-caption">
-                        <strong>SAM Legal Prima by SLP Group</strong>
-                        <br>
-                        <span>Solusi Legalitas Anda</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="stats">
-            <div class="wrap stats-grid">
-                <div class="stat">
-                    <b>2019</b>
-                    <span>Tahun berdiri</span>
-                </div>
-
-                <div class="stat">
-                    <b>22+</b>
-                    <span>Jenis layanan</span>
-                </div>
-
-                <div class="stat">
-                    <b>5</b>
-                    <span>Kategori utama</span>
-                </div>
-
-                <div class="stat">
-                    <b>Profesional</b>
-                    <span>Pendampingan klien</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="marquee" aria-label="Instansi dan lembaga terkait">
-            <div class="marquee-track"><span>BNSP</span><i aria-hidden="true">◆</i><span>LPJK</span><i aria-hidden="true">◆</i><span>PUPR</span><i aria-hidden="true">◆</i><span>ESDM</span><i aria-hidden="true">◆</i><span>BPJPH</span><i aria-hidden="true">◆</i><span>Kemenkumham</span><i aria-hidden="true">◆</i><span>ISO</span><i aria-hidden="true">◆</i><span>HACCP</span><i aria-hidden="true">◆</i><span>Sertifikasi Halal</span><i aria-hidden="true">◆</i><span>BNSP</span><i aria-hidden="true">◆</i><span>LPJK</span><i aria-hidden="true">◆</i><span>PUPR</span><i aria-hidden="true">◆</i><span>ESDM</span><i aria-hidden="true">◆</i><span>BPJPH</span><i aria-hidden="true">◆</i><span>Kemenkumham</span><i aria-hidden="true">◆</i><span>ISO</span><i aria-hidden="true">◆</i><span>HACCP</span><i aria-hidden="true">◆</i><span>Sertifikasi Halal</span><i aria-hidden="true">◆</i></div>
-        </section>
-
-        <section class="seal-strip">
-            <div class="wrap seal-strip-inner">
-                <div class="seal-wrap">
-                    <span class="seal-glow" aria-hidden="true"></span>
-                    <svg class="brand-seal" viewBox="0 0 200 200" aria-hidden="true">
-                        <circle class="seal-ring-outer" cx="100" cy="100" r="92" />
-                        <circle class="seal-ring" cx="100" cy="100" r="76" />
-                        <circle class="seal-ring-inner" cx="100" cy="100" r="60" />
-                        <path class="seal-check" d="M70 102 L92 124 L132 76" />
-                    </svg>
-                    <noscript><style>.seal-ring,.seal-check{stroke-dashoffset:0 !important;}</style></noscript>
-                </div>
-
-                <div class="seal-strip-text">
-                    <p class="eyebrow">Legalitas &amp; Sertifikasi</p>
-                    <h2 class="serif">
-                        Setiap proses kami kawal sampai sah, resmi, dan terbit.
-                    </h2>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="wrap split">
-                <div>
-                    <p class="eyebrow">Tentang Kami</p>
-
-                    <h2
-                        class="serif"
-                        style="font-size:2.7rem;color:var(--navy);margin:0 0 18px"
-                    >
-                        Mitra untuk kebutuhan legalitas dan sertifikasi usaha.
-                    </h2>
-
-                    <p class="quote">
-                        “Lebih dari sekadar pengurusan dokumen — kami membantu membuat
-                        proses terasa lebih terarah.”
-                    </p>
-                </div>
-
-                <div class="copy">
-                    <p>
-                        SAM Legal Prima by SLP Group merupakan perusahaan yang bergerak
-                        di bidang jasa legalitas usaha, perizinan, sertifikasi, dan
-                        layanan pendukung profesional bagi perusahaan maupun pelaku usaha
-                        di Indonesia.
-                    </p>
-
-                    <p>
-                        Didirikan sejak tahun 2019, kami hadir untuk membantu kebutuhan
-                        administrasi, legalitas, perizinan, dan sertifikasi yang
-                        diperlukan dalam menjalankan serta mengembangkan usaha secara
-                        lebih tertib dan profesional.
-                    </p>
-
-                    <a class="card-link" href="tentang.html">
-                        Kenali SAM Legal Prima →
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section alt">
-            <div class="wrap">
-                <div class="section-head">
-                    <p class="eyebrow">Layanan</p>
-
-                    <h2>Solusi sesuai kebutuhan bisnis Anda.</h2>
-
-                    <p>
-                        Mulai dari pendirian badan usaha sampai sertifikasi dan layanan
-                        pendukung.
-                    </p>
-                </div>
-
-                <div class="cards">
-                    <div class="card">
-                        <span class="num">01</span>
-
-                        <h3>Legalitas Usaha</h3>
-
-                        <p>
-                            PT, PT Perorangan, CV, PT PMA, Yayasan, Perkumpulan,
-                            Koperasi, dan Firma.
-                        </p>
-
-                        <a class="card-link" href="layanan.html">
-                            Lihat layanan →
-                        </a>
-                    </div>
-
-                    <div class="card">
-                        <span class="num">02</span>
-
-                        <h3>Konstruksi</h3>
-
-                        <p>
-                            SKK Konstruksi dan SBU Konstruksi untuk kebutuhan tenaga
-                            maupun badan usaha.
-                        </p>
-
-                        <a class="card-link" href="layanan.html">
-                            Lihat layanan →
-                        </a>
-                    </div>
-
-                    <div class="card">
-                        <span class="num">03</span>
-
-                        <h3>Sertifikasi</h3>
-
-                        <p>
-                            Profesi, ketenagalistrikan, HACCP, halal, ISO, dan kebutuhan
-                            sertifikasi lainnya.
-                        </p>
-
-                        <a class="card-link" href="layanan.html">
-                            Lihat layanan →
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section dark">
-            <div class="wrap">
-                <div class="section-head">
-                    <p class="eyebrow">Alur Proses</p>
-
-                    <h2>Setiap tahap dibuat lebih mudah dipahami.</h2>
-
-                    <p>
-                        Dari konsultasi, pengecekan persyaratan, pengajuan, hingga
-                        penerbitan.
-                    </p>
-                </div>
-
-                <div class="process-preview">
-                    <div class="step">
-                        <b>01</b>
-
-                        <h3>Konsultasi</h3>
-
-                        <p>
-                            Memahami kebutuhan dan kondisi usaha sebelum proses dimulai.
-                        </p>
-                    </div>
-
-                    <div class="step">
-                        <b>02</b>
-
-                        <h3>Verifikasi</h3>
-
-                        <p>
-                            Mengecek dokumen dan persyaratan layanan yang dipilih.
-                        </p>
-                    </div>
-
-                    <div class="step">
-                        <b>03</b>
-
-                        <h3>Pengajuan</h3>
-
-                        <p>
-                            Pengajuan dilakukan ke instansi atau lembaga terkait.
-                        </p>
-                    </div>
-
-                    <div class="step">
-                        <b>04</b>
-
-                        <h3>Penerbitan</h3>
-
-                        <p>
-                            Dokumen diterbitkan apabila persyaratan terpenuhi dan
-                            disetujui.
-                        </p>
-                    </div>
-                </div>
-
-                <a
-                    class="btn btn-gold"
-                    style="margin-top:32px"
-                    href="proses.html"
+            <div class="icon-wrap">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
                 >
-                    Pelajari Proses →
-                </a>
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                    <path d="M8 2.8 6.5 4"></path>
+                    <path d="m16 2.8 1.5 1.2"></path>
+                </svg>
             </div>
-        </section>
 
-        <section class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <p class="eyebrow">Mengapa SAM Legal Prima?</p>
-
-                    <h2>Profesional, transparan, dan responsif.</h2>
-                </div>
-
-                <div class="feature-grid">
-                    <div class="feature">
-                        <div class="icon">01</div>
-
-                        <h3>Proses Transparan</h3>
-
-                        <p>
-                            Biaya dan alur kerja dijelaskan sejak awal.
-                        </p>
-                    </div>
-
-                    <div class="feature">
-                        <div class="icon">02</div>
-
-                        <h3>Estimasi Terukur</h3>
-
-                        <p>
-                            Estimasi disesuaikan dengan jenis layanan.
-                        </p>
-                    </div>
-
-                    <div class="feature">
-                        <div class="icon">03</div>
-
-                        <h3>Dokumen Resmi</h3>
-
-                        <p>
-                            Dokumen mengikuti proses penerbitan instansi terkait.
-                        </p>
-                    </div>
-
-                    <div class="feature">
-                        <div class="icon">04</div>
-
-                        <h3>Tim Berpengalaman</h3>
-
-                        <p>
-                            Pendampingan untuk beragam kebutuhan usaha.
-                        </p>
-                    </div>
-
-                    <div class="feature">
-                        <div class="icon">05</div>
-
-                        <h3>Instansi Terkait</h3>
-
-                        <p>
-                            BNSP, LPJK, PUPR, ESDM, BPJPH, Kemenkumham, dan lainnya.
-                        </p>
-                    </div>
-                </div>
+            <div class="status">
+                <span class="status-dot"></span>
+                Website Under Maintenance
             </div>
-        </section>
 
-        <section class="cta">
-            <div class="wrap cta-box">
-                <div>
-                    <p class="eyebrow">Butuh Bantuan?</p>
+            <h1>
+                Kami Sedang<br>
+                <span>Menyempurnakan</span> Website.
+            </h1>
 
-                    <h2>
-                        Konsultasikan kebutuhan legalitas usaha Anda.
-                    </h2>
+            <p class="description">
+                SAM Legal Prima sedang melakukan pemeliharaan dan
+                peningkatan website untuk memberikan pengalaman yang
+                lebih baik bagi Anda. Kami akan kembali melayani
+                kebutuhan Anda sesegera mungkin.
+            </p>
 
-                    <p>
-                        Hubungi tim SAM Legal Prima untuk pembahasan awal.
-                    </p>
-                </div>
+            <div class="divider"></div>
 
-                <a
-                    class="btn btn-gold"
-                    href="https://wa.me/62895414915315"
-                    target="_blank"
+            <p class="contact-text">
+                Membutuhkan bantuan selama proses pemeliharaan?
+            </p>
+
+            <a
+                class="button"
+                href="https://wa.me/62895414915315"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
                 >
-                    Chat WhatsApp →
-                </a>
-            </div>
+                    <path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20l1.2-5.3A8.4 8.4 0 1 1 21 11.5Z"></path>
+                    <path d="M8.5 9a.8.8 0 0 1 1.3-.6l1 1.5a.8.8 0 0 1-.1 1l-.5.5a6 6 0 0 0 2.4 2.4l.5-.5a.8.8 0 0 1 1-.1l1.5 1a.8.8 0 0 1-.6 1.3A7 7 0 0 1 8.5 9Z"></path>
+                </svg>
+                Hubungi Kami
+            </a>
+
         </section>
     </main>
 
-    <footer class="site-footer footer">
-        <div class="wrap footer-grid">
-            <div>
-                <img
-                    class="footer-logo"
-                    src="assets/logo-sam-legal-prima.jpg"
-                    alt="SAM Legal Prima"
-                >
-
-                <p>
-                    SAM Legal Prima by SLP Group — solusi legalitas, perizinan,
-                    sertifikasi, dan layanan pendukung profesional bagi pelaku usaha.
-                </p>
-
-                <div class="socials">
-                    <a
-                        href="https://instagram.com/samlegalprima.id"
-                        target="_blank"
-                    >
-                        Instagram
-                    </a>
-
-                    <a
-                        href="https://facebook.com/samlegalprima.id"
-                        target="_blank"
-                    >
-                        Facebook
-                    </a>
-
-                    <a
-                        href="https://tiktok.com/@samlegalprima.id"
-                        target="_blank"
-                    >
-                        TikTok
-                    </a>
-                </div>
-            </div>
-
-            <div>
-                <h3>Perusahaan</h3>
-
-                <a href="tentang.html">Tentang</a>
-                <a href="tim.html">Tim</a>
-                <a href="proses.html">Proses</a>
-                <a href="kontak.html">Kontak</a>
-            </div>
-
-            <div>
-                <h3>Layanan</h3>
-
-                <a href="layanan.html">Semua Layanan</a>
-                <a href="layanan/pt-reguler.html">PT Reguler</a>
-                <a href="layanan/skk-konstruksi.html">SKK Konstruksi</a>
-                <a href="layanan/sertifikasi-halal.html">
-                    Sertifikasi Halal
-                </a>
-            </div>
-
-            <div>
-                <h3>Hubungi</h3>
-
-                <p>
-                    WhatsApp<br>
-                    <a href="https://wa.me/62895414915315">
-                        0895 4149 15315
-                    </a>
-                </p>
-
-                <p>
-                    Email<br>
-                    <a href="mailto:samlegalprima@gmail.com">
-                        samlegalprima@gmail.com
-                    </a>
-                </p>
-
-                <p>
-                    Senin–Jumat · 08.00–17.00
-                </p>
-            </div>
-        </div>
-
-        <div class="wrap footer-bottom">
-            © 2026 SAM Legal Prima by SLP Group. Semua hak dilindungi.
-        </div>
+    <footer>
+        <p>
+            &copy; 2026 <strong>SAM Legal Prima by SLP Group.</strong>
+        </p>
+        <p>Solusi Legalitas Anda</p>
     </footer>
 
-    <a
-        class="wa"
-        href="https://wa.me/62895414915315"
-        target="_blank"
-        aria-label="WhatsApp"
-    >
-        WA
-    </a>
-
-    <script src="script.js"></script>
-
-<script src="consult-pop.js"></script><script src="fx.js"></script></body>
+</body>
 </html>
-```
